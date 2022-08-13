@@ -11,7 +11,7 @@ let arr1 = [
 ]
 let set = new Set(arr)
 console.log('set:', set.__proto__)
-// 总结：Map构造函数不能直接接受任何参数 而 Set构造函数可以接受一个数组（或者具有 iterable 接口的其他数据结构）作为参数，用来初始化
+// 总结：Map构造函数接收一个二维数组并且是键值对的数组作为初始值 而 Set构造函数可以接受一个数组（或者具有 iterable 接口的其他数据结构）作为参数，用来初始化
 
 // 思考Q：什么样子的数据结构具备 iterable 接口？ A：该数据结构的原型上是否存在 Symbol(Symbol.iterator) 这个属性
 
