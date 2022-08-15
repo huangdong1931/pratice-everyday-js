@@ -43,7 +43,7 @@ let proxy1 = new Proxy({}, valid)
 
 let HTTP = {
   GET: (url, params) => {
-    return fetch(url).then(async response => await response.json() )
+    return fetch(url).then(response => response.json())
   },
   POST: (url, params) => {}
 }
