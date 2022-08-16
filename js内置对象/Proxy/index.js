@@ -49,3 +49,38 @@ let HTTP = {
 }
 
 console.log(HTTP.GET('./text.json'))
+
+/**
+ * 当handler.apply() 方法用于拦截函数的调用
+ * @param target 目标对象（函数）
+ * @param thisArg 被调用时的上下文对象
+ * @param argumentsList 被调用时的参数数组
+ * @return apply 方法可以返回任何值
+ */
+
+let sum = (a, b) => a + b
+let handler = {
+  apply: function(target, thisArg, argList) {
+    return target(argList[0], argList[1]) * 10
+  }
+}
+let proxy2 = new Proxy(sum, handler)
+
+// 思考：apply是否可用于实现重复请求？
+let fn = (...arg) => {
+  return setTimeout(() => {
+    return arg
+  }, 2000)
+}
+let handlerFn = {
+  apply: function(t, ctx, argList) {
+    // 这里为什么会返回 1,2,3
+    console.log('apply:', t(...argList))
+    console.log('apply:', t(...argList))
+    console.log('apply:', t(...argList))
+    return t(...argList)
+  }
+}
+let proxy3 = new Proxy(fn, handlerFn)
+
+console.log('value:', proxy3(999, 8888))
