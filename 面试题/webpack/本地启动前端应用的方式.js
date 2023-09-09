@@ -1,3 +1,5 @@
+// 本地启动前端应用的方式有哪些？
+
 // 方法一、利用child_process.exec()
 var c = require('child_process');
 // 使用默认浏览器打开

@@ -12,3 +12,4 @@ if (typeof num[Symbol.iterator] === 'function') {
 } else {
   console.log('数字不可迭代');
 }
+// 结论：如果该对象的 Symbol.iterator 属性 是一个 function 则属于可迭代对象
