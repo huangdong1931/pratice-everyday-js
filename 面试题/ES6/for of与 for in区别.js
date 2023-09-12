@@ -1,3 +1,11 @@
+
+/**
+ * for in 与 for of区别？
+ * 1. for in 是以任意顺序迭代一个除 Symbol 以外的可枚举属性的对象，for of 是迭代 一个可迭代对象
+ * 2. for in 遍历对象是键、数组是索引，for of 遍历可迭代对象是迭代器 Symbol.iterator 的值，数组是每一项的值
+ * 3. for in 可以遍历到对象上可枚举的原型链属性 for of 不会对原型链进行遍历
+ * 4. hasOwnProperty 可以消除 for in 遍历对象可枚举原型链属性的副作用
+ */
 // 1. 创建一个普通对象
 let obj = { a: 1, b: 2, c: 3 };
 

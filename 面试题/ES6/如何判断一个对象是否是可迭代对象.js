@@ -1,4 +1,7 @@
-// 如何测试一个对象是否是可迭代对象 ？
+/**
+ * 如何测试一个对象是否是可迭代对象 ？
+ * 如果该对象的 Symbol.iterator 属性 是一个 function 则属于可迭代对象
+ */
 let str = 'asdasd';
 if (typeof str[Symbol.iterator] === 'function') {
   console.log('字符串可迭代');
@@ -12,4 +15,3 @@ if (typeof num[Symbol.iterator] === 'function') {
 } else {
   console.log('数字不可迭代');
 }
-// 结论：如果该对象的 Symbol.iterator 属性 是一个 function 则属于可迭代对象

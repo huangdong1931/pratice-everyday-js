@@ -1,4 +1,9 @@
-// es5中如何判断一个构造函数是否是通过 new 关键字来调用的 ？
+/**
+ * es5中如何判断一个构造函数是否是通过 new 关键字来调用的 ？
+ * 1 通过设置严格模式 'use strict', this指向为 undefined 这样子为构造函数设置属性方法会直接报错
+ * 2 通过 new.target 属性来判断
+ * 3 通过 instance of 判断 this 指向是否指向当前构造函数实例
+ */
 
 // 1 通过 设置 一个模式 'use strict', this指向为 undefined 这样子为构造函数设置属性方法 会直接报错
 function Test1(name) {
