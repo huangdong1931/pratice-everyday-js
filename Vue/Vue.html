@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ant-design-vue@2.2.0/dist/antd.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ant-design-vue@2.2.0/dist/antd.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div>{{ message }}</div>
+    <template>
+      <a-space wrap>
+        <a-button type="primary">Primary Button</a-button>
+        <a-button>Default Button</a-button>
+        <a-button type="dashed">Dashed Button</a-button>
+        <a-button type="text">Text Button</a-button>
+        <a-button type="link">Link Button</a-button>
+      </a-space>
+    </template>
+  </div>
+
+  <script>
+    import { Button } from 'ant-design-vue';
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!',
+        checked: true
+      }
+    })
+    console.log(app);
+    app.use(Button);
+  </script>
+</body>
+
+</html>

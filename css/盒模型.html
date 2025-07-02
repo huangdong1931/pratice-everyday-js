@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./common.css">
+  <title>盒模型</title>
+  <style>
+    ul {
+      display: flex;
+      list-style-type: none;
+    }
+    .box {
+      display: flex;
+    }
+    .box1 {
+      width: 200px;
+      height: 200px;
+      margin: 10px;
+      padding: 5px;
+      border: 1px solid #000;
+      background: yellow;
+      box-sizing: content-box;
+    }
+    .box2 {
+      width: 200px;
+      height: 200px;
+      margin: 10px;
+      padding: 5px;
+      border: 1px solid #000;
+      background: yellow;
+      box-sizing: border-box;
+    }
+    
+  </style>
+</head>
+<body>
+  <header>盒模型</header>
+  <nav>
+    <ul>
+      <li>标准盒模型</li>
+      <li>怪异盒模型</li>
+    </ul>
+  </nav>
+
+  <div class="box">
+    <div class="box1">标准盒模型</div>
+    <div class="box2">怪异盒模型</div>
+  </div>
+</body>
+</html>

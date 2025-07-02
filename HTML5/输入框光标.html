@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>输入框光标</title>
+  <style>
+    .bold-font {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    #select {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <p class="bold-font">1. 输入框光标问题：</p>
+    <input id="inp" type="text" value="请输入内容">
+    <button onclick="setPosition()">设置光标位置</button>
+    <button onclick="selectAll()">全选</button>
+    <button onclick="copy()">复制</button>
+  </div>
+  <div>
+    <p class="bold-font">2. @光标定位功能</p>
+    <textarea name="textarea" id="textarea" cols="30" rows="1">123@@123@</textarea>
+    <select id="select" name="select" size="3">
+      <option value="" selected hidden>请选择</option>
+      <option value="1">张三</option>
+      <option value="2">李四</option>
+      <option value="3">王五</option>
+    </select>
+  </div>
+  <script>
+    let inp = document.getElementById('inp')
+    let text = document.getElementById('textarea')
+    let select = document.getElementById('select')
+
+    // 获取输入框光标位置
+    inp.addEventListener('click', (e) => {
+      console.log(inp.selectionStart)
+    })
+
+    // 设置光标位置
+    const setPosition = () => {
+      inp.focus()
+      const len = inp.value.length
+      inp.setSelectionRange(len, len)
+    }
+
+    // 全选输入框文本
+    const selectAll = () => {
+      inp.select()
+    }
+
+    // 复制
+    const copy = () => {
+      let copyInp = document.createElement('input')
+      document.body.appendChild(copyInp)
+      copyInp.setAttribute('value', inp.value)
+      copyInp.select()
+      document.execCommand('copy')
+      copyInp.remove()
+    }
+
+    // 获取符号
+    const getSymbol = (val) => {
+      let pos = text.selectionStart
+      let curPosVal = val[pos - 1]
+      return curPosVal === '@'
+    }
+
+    // 关闭下拉框
+    const closeSelect = () => {
+      select.style.display = 'none'
+    }
+
+    // 获取光标位置
+    const getCursorPos = (e) => {
+      console.log(e.clientX, e);
+      const X = e.clientX
+      const Y = e.clientY
+      let style = `position: absolute; display: ${select.style.display}; left: ${X}px; top: ${Y + 10}px;`
+      select.setAttribute('style', style)
+    }
+
+    // 是否展示下拉框
+    const ifShowSelect = (e) => {
+      console.log(e);
+      let val = e.target.value
+      select.style.display = getSymbol(val) ? 'block' : 'none'
+      getCursorPos(e)
+    }
+
+    // const mousePos = (e) => {
+    //   if (select.style.display === 'block') return
+    //   const X = e.clientX
+    //   const Y = e.clientY
+    //   let style = `position: absolute; display: ${select.style.display}; left: ${X}px; top: ${Y + 10}px;`
+    //   select.setAttribute('style', style)
+    // }
+
+    text.addEventListener('click', ifShowSelect)
+    text.addEventListener('input', ifShowSelect)
+    text.addEventListener('blur', closeSelect)
+    // window.addEventListener('mousemove', mousePos)
+
+  </script>
+</body>
+
+</html>

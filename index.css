@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+body {
+  padding: 10px;
+  box-sizing: border-box;
+}
+header {
+  text-align: center;
+}
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.list > li:not(:last-child) {
+  margin-right: 10px;
+}

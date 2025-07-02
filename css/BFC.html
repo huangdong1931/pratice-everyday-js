@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BFC</title>
+  <style>
+    p, ul {
+      margin: 0;
+      padding: 0;
+    }
+    .tabs-content {
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="tabs" style="display: flex;">
+    <div id="00" style="padding: 5px; cursor: pointer; color: red;">BFC概念</div>
+    <div id="01" style="padding: 5px; cursor: pointer; color: black;">BFC作用是什么</div>
+    <div id="02" style="padding: 5px; cursor: pointer; color: black;">BFC触发条件</div>
+  </div>
+
+  <div class="tabs-content">
+    <div id="tab01" style="display: block;">
+      <p style="color: lightcoral;">BFC，即Block Formatting Contexts（块级格式化上下文），是W3C
+        CSS2.1规范中的一个概念。它决定了元素如何对其内容进行定位，以及与其他元素的关系和作用。</p>
+      <p style="color: lightcoral;">BFC可以理解为一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level
+        Box如何布局，并且与这个区域外部毫不相干。BFC布局规则如下</p>
+      <div style="margin-left: 20px;">
+        <ul style="color: lightcoral;">
+          <li>内部的Box会在垂直方向，一个接一个地放置。</li>
+          <li>Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠。</li>
+          <li>每个元素的margin box的左边，与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。</li>
+          <li>BFC的区域不会与float box重叠。</li>
+          <li>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。</li>
+          <li>计算BFC的高度时，浮动元素也参与计算。</li>
+        </ul>
+      </div>
+      
+      <hr>
+    </div>
+
+    <div id="tab02" style="display: none;">
+      <p style="color: lightcoral;">BFC（块格式化上下文）在Web页面布局中起着重要的作用，它主要有以下几个作用：</p>
+      <div style="margin-left: 20px;">
+        <ul style="color: lightcoral;">
+          <li>清除浮动：BFC可以清除浮动元素对其他元素的影响，防止浮动元素溢出容器。</li>
+          <li>解决margin塌陷问题：在BFC中，相邻的块级元素的垂直外边距会发生重叠，这样可以解决margin塌陷问题。</li>
+          <li>自适应布局：BFC可以包含浮动元素和绝对定位元素，使得这些元素不会影响到BFC外部的元素，从而实现自适应布局。</li>
+        </ul>
+      </div>
+      
+      <hr>
+    </div>
+
+    <div id="tab03" style="display: none;">
+      <p style="color: lightcoral;">BFC（块格式化上下文）的触发条件主要有以下几种：</p>
+      <div style="margin-left: 10px;">
+        <ul style="color: lightcoral; margin-left: 20px;">
+          <li>给元素设置浮动（float: left | right）</li>
+          <li>给元素设置脱离文档流的定位（position: absolute | fixed）</li>
+          <li>给元素设置内容溢出（overflow: hidden | scroll | auto）</li>
+          <li>给元素设置display属性为flex、inline-block或者table-cell</li>
+        </ul>
+      </div>
+      
+      <hr>
+    </div>
+  </div>
+
+  <div class="test">
+    <div></div>
+  </div>
+
+  <script>
+    let tabs = document.querySelector('.tabs');
+    tabs.addEventListener('click', (e) => {
+      let tabs = document.querySelector('.tabs');
+      let el = document.querySelector('.tabs-content');
+
+      [...tabs.children].forEach(tabs => {
+        tabs.style.color = '#000'
+      })
+      e.target.style.color = 'red';
+
+      [...el.children].forEach(ele => {
+        ele.style.display = 'none';
+      })
+      el.children[+e.target.id].style.display = 'block';
+    })
+  </script>
+</body>
+
+</html>

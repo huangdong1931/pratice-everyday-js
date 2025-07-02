@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>边框特效</title>
+  <style>
+    .btn {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .btn span {
+      color: #fff;
+      font-size: 24px;
+      z-index: 1;
+    }
+    .btn::before {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 140%;
+      background: linear-gradient(rgb(24, 98, 235), rgb(229, 66, 6));
+    }
+    .btn::after {
+      content: "";
+      position: absolute;
+      background: #000;
+      inset: 4px; /* inset 是 top、bottom、left、right 都为5px的简写*/
+      border-radius: 16px;
+    }
+    .btn::before {
+      animation: rotate 4s linear infinite;
+    }
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="btn">
+    <span>hover me</span>
+  </div>
+</body>
+</html>

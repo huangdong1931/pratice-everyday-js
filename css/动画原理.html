@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .parent-box {
+      width: 300px;
+      border: 1px solid #ccc;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      /* 添加过渡效果 */
+    }
+
+    .child-box {
+      max-height: 0;
+      padding: 10px;
+      background-color: red;
+    }
+
+    .toggle-button {
+      margin-top: 10px;
+    }
+    .toggle-button:active + .child-box {
+      max-height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="toggle-button">展开/收起</button>
+  <div class="parent-box">
+    <div class="child-box">
+      <p>这里是内容...</p>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('.toggle-button').addEventListener('click', function () {
+      var parentBox = document.querySelector('.parent-box');
+      var maxHeight = parentBox.scrollHeight; // 获取内容的实际高度  
+      console.log('maxHeight:', maxHeight, parentBox.style.maxHeight);
+      if (parentBox.style.maxHeight) {
+        // 如果已经展开，则收起  
+        parentBox.style.maxHeight = 0;
+      } else {
+        // 如果已经收起，则展开  
+        parentBox.style.maxHeight = maxHeight + 'px';
+      }
+    });
+  </script>
+</body>
+
+</html>
